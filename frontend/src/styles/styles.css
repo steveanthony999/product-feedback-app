@@ -1,1 +1,109 @@
-/* No CSS *//*# sourceMappingURL=styles.css.map */
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@400;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Jost', sans-serif;
+}
+
+body {
+  background-color: #f7f8fd;
+}
+
+.text-white {
+  color: #fff;
+}
+
+.h1 {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 35px;
+  letter-spacing: -0.33px;
+}
+
+.h2 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 29px;
+  letter-spacing: -0.25px;
+}
+
+.h3 {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 26px;
+  letter-spacing: -0.25px;
+}
+
+.h4 {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.2px;
+}
+
+.body-1 {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+}
+
+.body-2 {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 22px;
+}
+
+.body-3 {
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 19px;
+}
+
+.HomePage {
+  width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.HomePage .container {
+  width: 1110px;
+  margin-top: 94px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.HomePage .container .left .top {
+  width: 255px;
+  padding-left: 25px;
+  border-radius: 10px;
+}
+
+.HomePage .container .left .top h2 {
+  display: inline-block;
+  margin-top: 68px;
+}
+
+.HomePage .container .left .top p {
+  display: inline-block;
+  margin-bottom: 30px;
+  opacity: 0.75;
+}
+/*# sourceMappingURL=styles.css.map */
