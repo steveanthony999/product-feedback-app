@@ -1,3 +1,5 @@
+import CategoryBoxComponent from '../Components/CategoryBoxComponent';
+
 import BackgroundHeaderImg from '../assets/suggestions/desktop/background-header.png';
 
 const HomePage = () => {
@@ -14,7 +16,9 @@ const HomePage = () => {
             <br />
             <p className='body-2 text-white'>Feedback Board</p>
           </div>
-          <div className='middle'>middle</div>
+          <div className='middle'>
+            <CategoryBoxComponent />
+          </div>
           <div className='bottom'>bottom</div>
         </div>
         <div className='right'>right</div>

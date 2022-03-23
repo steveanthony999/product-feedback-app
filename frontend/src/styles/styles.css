@@ -11,8 +11,27 @@ body {
   background-color: #f7f8fd;
 }
 
+ul li {
+  list-style: none;
+}
+
+input[type='radio'] {
+  position: fixed;
+  opacity: 0;
+  pointer-events: none;
+}
+
+input[type='radio']:checked + label {
+  background: #4661e6 !important;
+  color: #fff;
+}
+
 .text-white {
   color: #fff;
+}
+
+.text-blue {
+  color: #4661e6;
 }
 
 .h1 {
@@ -105,5 +124,38 @@ body {
   display: inline-block;
   margin-bottom: 30px;
   opacity: 0.75;
+}
+
+.CategoryBox {
+  margin-top: 24px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.CategoryBox .container {
+  width: 255px;
+  padding: 17px;
+  margin-top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.CategoryBox .container .btn {
+  padding: 10px 17px;
+  margin: 7px 8px;
+  background-color: #f2f4ff;
+  border-radius: 10px;
+}
+
+.CategoryBox .container .btn:hover {
+  cursor: pointer;
+  background-color: #cfd7ff;
+}
+
+.CategoryBox .container .active {
+  background-color: red;
 }
 /*# sourceMappingURL=styles.css.map */

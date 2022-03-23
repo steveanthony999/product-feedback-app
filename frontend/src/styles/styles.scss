@@ -9,6 +9,9 @@
 
 // Variables
 $background-color: #f7f8fd;
+$dark-blue: #4661e6;
+$light-blue: #f2f4ff;
+$hover-blue: #cfd7ff;
 
 $margin-top-desktop: 94px;
 
@@ -19,8 +22,27 @@ body {
   background-color: $background-color;
 }
 
+ul li {
+  list-style: none;
+}
+
+input[type='radio'] {
+  position: fixed;
+  opacity: 0;
+  pointer-events: none;
+}
+
+input[type='radio']:checked + label {
+  background: $dark-blue !important;
+  color: #fff;
+}
+
 .text-white {
   color: #fff;
+}
+
+.text-blue {
+  color: #4661e6;
 }
 
 .h1 {
@@ -69,7 +91,7 @@ body {
   line-height: 19px;
 }
 
-// HomePage
+// Home Page
 .HomePage {
   width: 100vw;
   display: flex;
@@ -100,6 +122,37 @@ body {
           opacity: 0.75;
         }
       }
+    }
+  }
+}
+
+// Category Box Component
+.CategoryBox {
+  margin-top: 24px;
+  background-color: #fff;
+  border-radius: $border-radius;
+
+  .container {
+    width: 255px;
+    padding: 17px;
+    margin-top: 0;
+    display: flex;
+    flex-wrap: wrap;
+
+    .btn {
+      padding: 10px 17px;
+      margin: 7px 8px;
+      background-color: $light-blue;
+      border-radius: $border-radius;
+
+      &:hover {
+        cursor: pointer;
+        background-color: $hover-blue;
+      }
+    }
+
+    .active {
+      background-color: red;
     }
   }
 }
