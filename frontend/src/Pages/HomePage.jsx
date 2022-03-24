@@ -5,6 +5,7 @@ import { getFeedbacks, reset } from '../features/feedbacks/feedbackSlice';
 
 import CategoryBoxComponent from '../Components/CategoryBoxComponent';
 import ProductFeedbackComponent from '../Components/ProductFeedbackComponent';
+import EmptyFeedbackComponent from '../Components/EmptyFeedbackComponent';
 
 import BackgroundHeaderImg from '../assets/suggestions/desktop/background-header.png';
 
@@ -27,11 +28,6 @@ const HomePage = () => {
     dispatch(getFeedbacks());
   }, [dispatch]);
 
-  //   if (isLoading) {
-  // return <Spinner />;
-  // return <p>Loading...</p>;
-  //   }
-
   return (
     <div className='HomePage'>
       <div className='container'>
@@ -51,9 +47,18 @@ const HomePage = () => {
           <div className='bottom'>bottom</div>
         </div>
         <div className='right'>
-          {feedbacks.map((feedback) => (
-            <ProductFeedbackComponent key={feedback.id} feedback={feedback} />
-          ))}
+          {feedbacks.length === 0 ? (
+            <EmptyFeedbackComponent />
+          ) : (
+            <>
+              {feedbacks.map((feedback) => (
+                <ProductFeedbackComponent
+                  key={feedback.id}
+                  feedback={feedback}
+                />
+              ))}
+            </>
+          )}
         </div>
       </div>
     </div>
