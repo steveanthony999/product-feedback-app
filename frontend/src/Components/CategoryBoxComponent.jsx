@@ -8,10 +8,7 @@ const Button = ({ name, isChecked }) => {
         value={name}
         defaultChecked={isChecked}
       />
-      <label
-        // className={`btn text-blue body-3 ${isActive ? 'active' : null}`}
-        className={`btn text-blue body-3`}
-        htmlFor={name}>
+      <label className={`btn text-blue body-3`} htmlFor={name}>
         {name}
       </label>
     </>

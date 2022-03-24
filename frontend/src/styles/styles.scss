@@ -91,6 +91,8 @@ input[type='radio']:checked + label {
   line-height: 19px;
 }
 
+// PAGES
+
 // Home Page
 .HomePage {
   width: 100vw;
@@ -126,6 +128,8 @@ input[type='radio']:checked + label {
   }
 }
 
+// COMPONENTS
+
 // Category Box Component
 .CategoryBox {
   margin-top: 24px;
@@ -154,5 +158,12 @@ input[type='radio']:checked + label {
     .active {
       background-color: red;
     }
+  }
+}
+
+// Product Feedback Component
+.ProductFeedbackComponent {
+  .container {
+    margin-top: 0;
   }
 }

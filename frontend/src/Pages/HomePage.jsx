@@ -1,20 +1,36 @@
 import { useEffect } from 'react';
-import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { getFeedbacks, reset } from '../features/feedbacks/feedbackSlice';
 
 import CategoryBoxComponent from '../Components/CategoryBoxComponent';
+import ProductFeedbackComponent from '../Components/ProductFeedbackComponent';
 
 import BackgroundHeaderImg from '../assets/suggestions/desktop/background-header.png';
 
 const HomePage = () => {
-  const fetchData = async () => {
-    const res = await axios.get(`data.json`);
+  const { feedbacks, isLoading, isSuccess } = useSelector(
+    (state) => state.feedbacks
+  );
 
-    console.log(res.data);
-  };
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    return () => {
+      if (isSuccess) {
+        dispatch(reset());
+      }
+    };
+  }, [dispatch, isSuccess]);
+
+  useEffect(() => {
+    dispatch(getFeedbacks());
+  }, [dispatch]);
+
+  if (isLoading) {
+    // return <Spinner />;
+    return <p>Loading...</p>;
+  }
 
   return (
     <div className='HomePage'>
@@ -34,7 +50,11 @@ const HomePage = () => {
           </div>
           <div className='bottom'>bottom</div>
         </div>
-        <div className='right'>right</div>
+        <div className='right'>
+          {feedbacks.map((feedback) => (
+            <ProductFeedbackComponent key={feedback.id} feedback={feedback} />
+          ))}
+        </div>
       </div>
     </div>
   );

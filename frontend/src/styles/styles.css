@@ -158,4 +158,8 @@ input[type='radio']:checked + label {
 .CategoryBox .container .active {
   background-color: red;
 }
+
+.ProductFeedbackComponent .container {
+  margin-top: 0;
+}
 /*# sourceMappingURL=styles.css.map */
