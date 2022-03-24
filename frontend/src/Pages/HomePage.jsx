@@ -48,7 +48,7 @@ const HomePage = () => {
           <div className='bottom'>bottom</div>
         </div>
         <div className='right'>
-          <TopBarComponent />
+          <TopBarComponent feedback={feedbacks} />
           {feedbacks.length === 0 ? (
             <EmptyFeedbackComponent />
           ) : (
