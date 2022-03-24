@@ -1,8 +1,21 @@
+import { useEffect } from 'react';
+import axios from 'axios';
+
 import CategoryBoxComponent from '../Components/CategoryBoxComponent';
 
 import BackgroundHeaderImg from '../assets/suggestions/desktop/background-header.png';
 
 const HomePage = () => {
+  const fetchData = async () => {
+    const res = await axios.get(`data.json`);
+
+    console.log(res.data);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <div className='HomePage'>
       <div className='container'>
