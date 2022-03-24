@@ -13,9 +13,9 @@ const initialState = {
 // Get feedbacks
 export const getFeedbacks = createAsyncThunk(
   'feedbacks/getAll',
-  async (_, thunkAPI) => {
+  async (filteredItem, thunkAPI) => {
     try {
-      return await feedbackService.getFeedbacks();
+      return await feedbackService.getFeedbacks(filteredItem);
     } catch (error) {
       const message =
         (error.response &&

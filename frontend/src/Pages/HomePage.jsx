@@ -27,10 +27,10 @@ const HomePage = () => {
     dispatch(getFeedbacks());
   }, [dispatch]);
 
-  if (isLoading) {
-    // return <Spinner />;
-    return <p>Loading...</p>;
-  }
+  //   if (isLoading) {
+  // return <Spinner />;
+  // return <p>Loading...</p>;
+  //   }
 
   return (
     <div className='HomePage'>
