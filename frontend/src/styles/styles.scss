@@ -20,6 +20,7 @@ $border-radius: 10px;
 // Global
 body {
   background-color: $background-color;
+  margin-top: $margin-top-desktop;
 }
 
 ul li {
@@ -103,7 +104,7 @@ input[type='radio']:checked + label {
 
   .container {
     width: 1110px;
-    margin-top: $margin-top-desktop;
+    // margin-top: $margin-top-desktop;
     display: flex;
     flex-direction: row;
 
@@ -139,7 +140,7 @@ input[type='radio']:checked + label {
   .container {
     width: 255px;
     padding: 17px;
-    margin-top: 0;
+    // margin-top: 0;
     display: flex;
     flex-wrap: wrap;
 
@@ -161,9 +162,14 @@ input[type='radio']:checked + label {
   }
 }
 
+// TopBar Component
+.TopBarComponent {
+  display: flex;
+}
+
 // Product Feedback Component
 .ProductFeedbackComponent {
   .container {
-    margin-top: 0;
+    // margin-top: 0;
   }
 }

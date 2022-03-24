@@ -9,6 +9,7 @@
 
 body {
   background-color: #f7f8fd;
+  margin-top: 94px;
 }
 
 ul li {
@@ -99,7 +100,6 @@ input[type='radio']:checked + label {
 
 .HomePage .container {
   width: 1110px;
-  margin-top: 94px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -135,7 +135,6 @@ input[type='radio']:checked + label {
 .CategoryBox .container {
   width: 255px;
   padding: 17px;
-  margin-top: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -159,7 +158,9 @@ input[type='radio']:checked + label {
   background-color: red;
 }
 
-.ProductFeedbackComponent .container {
-  margin-top: 0;
+.TopBarComponent {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 /*# sourceMappingURL=styles.css.map */

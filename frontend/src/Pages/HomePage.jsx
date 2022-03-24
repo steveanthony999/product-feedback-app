@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getFeedbacks, reset } from '../features/feedbacks/feedbackSlice';
 
 import CategoryBoxComponent from '../Components/CategoryBoxComponent';
+import TopBarComponent from '../Components/TopBarComponent';
 import ProductFeedbackComponent from '../Components/ProductFeedbackComponent';
 import EmptyFeedbackComponent from '../Components/EmptyFeedbackComponent';
 
@@ -47,6 +48,7 @@ const HomePage = () => {
           <div className='bottom'>bottom</div>
         </div>
         <div className='right'>
+          <TopBarComponent />
           {feedbacks.length === 0 ? (
             <EmptyFeedbackComponent />
           ) : (
