@@ -31,8 +31,8 @@ const NewFeedbackPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // console.log({ title, category, detail });
-    dispatch(createFeedback({ title, category, detail }));
+    console.log({ title, category, detail });
+    // dispatch(createFeedback({ title, category, detail }));
   };
 
   if (isLoading) {
