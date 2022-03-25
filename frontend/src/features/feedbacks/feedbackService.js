@@ -2,6 +2,14 @@ import axios from 'axios';
 
 const API_URL = 'data.json';
 
+// Create New Feedback
+const createFeedback = async (feedbackData) => {
+  const res = await axios.post(API_URL, feedbackData);
+
+  //   console.log(res.data);
+  return res.data;
+};
+
 // Get feedbacks
 const getFeedbacks = async (filteredItem) => {
   const res = await axios.get(API_URL, filteredItem);
@@ -17,6 +25,6 @@ const getFeedbacks = async (filteredItem) => {
   }
 };
 
-const feedbackService = { getFeedbacks };
+const feedbackService = { createFeedback, getFeedbacks };
 
 export default feedbackService;
