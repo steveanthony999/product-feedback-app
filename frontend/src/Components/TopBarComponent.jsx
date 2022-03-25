@@ -1,21 +1,24 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { getFeedbacks } from '../features/feedbacks/feedbackSlice';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
-const TopBarComponent = ({ feedback }) => {
+const TopBarComponent = ({ passSortOrder }) => {
+  const [sortOrder, setSortOrder] = useState('most-upvotes');
+
   const { feedbacks, isLoading, isSuccess } = useSelector(
     (state) => state.feedbacks
   );
 
-  const dispatch = useDispatch();
+  useEffect(() => {
+    passSortOrder(sortOrder);
+  }, [sortOrder]);
 
   const handleChange = (e) => {
-    dispatch(getFeedbacks(e.target.value));
-    // console.log(e.target.value);
+    setSortOrder(e.target.value);
   };
 
   return (
     <div className='TopBarComponent'>
-      <div className='left'>{feedback.length} Suggestions</div>
+      <div className='left'>{feedbacks.length} Suggestions</div>
       <div className='middle'>
         <label htmlFor='sort'>Sort by:</label>
 
