@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const TopBarComponent = ({ passSortOrder }) => {
@@ -29,7 +30,9 @@ const TopBarComponent = ({ passSortOrder }) => {
           <option value='least-comments'>Least Comments</option>
         </select>
       </div>
-      <div className='right'>Add Feedback</div>
+      <div className='right'>
+        <Link to='/new-feedback'>Add Feedback</Link>
+      </div>
     </div>
   );
 };
