@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_URL = 'data.json';
+// const API_URL = 'data.json';
+const API_URL = '/api/feedbacks/';
 
 // Create New Feedback
 const createFeedback = async (feedbackData) => {

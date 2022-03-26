@@ -11,9 +11,18 @@ const feedbackSchema = mongoose.Schema(
       required: [true, 'Please select a category'],
       enum: ['UI', 'UX', 'Enhancement', 'Bug', 'Feature'],
     },
+    status: {
+      type: String,
+      enum: ['Suggestion', 'Planned', 'In-Progress', 'Live'],
+      default: 'Suggestion',
+    },
     description: {
       type: String,
       required: [true, 'Please enter a description'],
+    },
+    upvotes: {
+      type: Number,
+      default: 0,
     },
   },
   {
