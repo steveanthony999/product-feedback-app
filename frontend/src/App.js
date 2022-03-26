@@ -14,9 +14,12 @@ function App() {
       <div className='App'>
         <Routes>
           <Route path='/' element={<HomePage />} />
-          <Route path='/feedback-detail' element={<FeedbackDetailPage />} />
+          <Route
+            path='/feedback/:feedbackId'
+            element={<FeedbackDetailPage />}
+          />
           <Route path='/new-feedback' element={<NewFeedbackPage />} />
-          <Route path='/edit-feedback' element={<EditFeedbackPage />} />
+          <Route path='/edit-feedback/:id' element={<EditFeedbackPage />} />
           <Route path='/roadmap' element={<RoadmapPage />} />
         </Routes>
       </div>

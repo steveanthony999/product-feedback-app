@@ -48,6 +48,25 @@ export const getFeedbacks = createAsyncThunk(
   }
 );
 
+// Get Single Feedback
+export const getFeedback = createAsyncThunk(
+  'feedbacks/get',
+  async (feedbackId, thunkAPI) => {
+    try {
+      return await feedbackService.getFeedback(feedbackId);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const feedbackSlice = createSlice({
   name: 'feedback',
   initialState,
@@ -77,6 +96,19 @@ export const feedbackSlice = createSlice({
         state.feedbacks = action.payload;
       })
       .addCase(getFeedbacks.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getFeedback.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getFeedback.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.feedbacks = action.payload;
+      })
+      .addCase(getFeedback.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

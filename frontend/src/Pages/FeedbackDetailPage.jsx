@@ -1,4 +1,68 @@
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link, useLocation, useParams } from 'react-router-dom';
+import { getFeedback } from '../features/feedbacks/feedbackSlice';
+
 const FeedbackDetailPage = () => {
-  return <div>FeedbackDetailPage</div>;
+  const location = useLocation();
+
+  const { feedback, isLoading, isSuccess, isError, message } = useSelector(
+    (state) => state.feedbacks
+  );
+
+  const params = useParams();
+  const dispatch = useDispatch();
+  const { feedbackId } = useParams();
+
+  useEffect(() => {
+    if (isError) {
+      console.log(message);
+    }
+
+    // console.log(feedbackId);
+    dispatch(getFeedback(feedbackId));
+  }, [isError, message, feedbackId]);
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (isError) {
+    return <h3>Something went wrong</h3>;
+  }
+
+  return (
+    <div className='FeedbackDetailPage'>
+      <div className='container'>
+        <div className='top-bar'>
+          <p>Go Back</p>
+          <Link to={`/edit-feedback${location.pathname}`}>Edit Feedback</Link>
+        </div>
+        <div className='feedback-item'>
+          <div className='left'>99</div>
+          <div className='middle'>
+            <h3>Feedback Title</h3>
+            <p>Feedback Detail</p>
+            <div>Category</div>
+          </div>
+          <div className='right'>
+            <p>4</p>
+          </div>
+        </div>
+        <div className='comments-container'>
+          <h1>Comments Logic Here</h1>
+        </div>
+        <div className='add-comment'>
+          <h3>Add Comment</h3>
+          <textarea
+            name=''
+            id=''
+            placeholder='Type your comment here'></textarea>
+          <p>250 Characters left</p>
+          <button>Post Comment</button>
+        </div>
+      </div>
+    </div>
+  );
 };
 export default FeedbackDetailPage;

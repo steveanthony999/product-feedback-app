@@ -25,6 +25,15 @@ const getFeedbacks = async (filteredItem) => {
   }
 };
 
-const feedbackService = { createFeedback, getFeedbacks };
+// Get Single Feedback
+const getFeedback = async (feedbackId) => {
+  //   const res = await axios.get(API_URL + feedbackId);
+  const res = await axios.get(feedbackId);
+
+  console.log(res.data);
+  //   return res.data;
+};
+
+const feedbackService = { createFeedback, getFeedbacks, getFeedback };
 
 export default feedbackService;
