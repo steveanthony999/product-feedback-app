@@ -11,4 +11,19 @@ const getFeedbacks = asyncHandler(async (req, res) => {
   res.status(200).json(feedbacks);
 });
 
-module.exports = { getFeedbacks };
+// @desc    Get Feedback
+// @route   GET /api/feedbacks/:id
+// @access  Public
+const getFeedback = asyncHandler(async (req, res) => {
+  const feedback = await Feedback.findById(req.params.id); // Gets feedback from url
+
+  if (!feedback) {
+    res.status(404);
+
+    throw new Error('Feedback not found');
+  }
+
+  res.status(200).json(feedback);
+});
+
+module.exports = { getFeedbacks, getFeedback };

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const ProductFeedbackComponent = ({ feedback }) => {
   return (
-    <Link to={`/feedback/${feedback.id}`}>
+    <Link to={`/feedback/${feedback._id}`}>
       <div className='ProductFeedbackComponent'>
         <div className='container'>
           <div className='left'>

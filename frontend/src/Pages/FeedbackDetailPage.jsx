@@ -2,12 +2,21 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { getFeedback } from '../features/feedbacks/feedbackSlice';
+import {
+  getComments,
+  reset as commentReset,
+} from '../features/comments/commentSlice';
+import CommentComponent from '../Components/CommentComponent';
 
 const FeedbackDetailPage = () => {
   const location = useLocation();
 
   const { feedback, isLoading, isSuccess, isError, message } = useSelector(
     (state) => state.feedbacks
+  );
+
+  const { comments, isLoading: commentsIsLoading } = useSelector(
+    (state) => state.comments
   );
 
   const params = useParams();
@@ -19,17 +28,18 @@ const FeedbackDetailPage = () => {
       console.log(message);
     }
 
-    // console.log(feedbackId);
     dispatch(getFeedback(feedbackId));
+    // dispatch(getComments(feedbackId));
+    comments ? console.log(getComments(feedbackId)) : console.log('none');
   }, [isError, message, feedbackId]);
 
   if (isLoading) {
     return <p>Loading...</p>;
   }
 
-  if (isError) {
-    return <h3>Something went wrong</h3>;
-  }
+  //   if (isError) {
+  //     return <h3>Something went wrong</h3>;
+  //   }
 
   return (
     <div className='FeedbackDetailPage'>
@@ -50,7 +60,13 @@ const FeedbackDetailPage = () => {
           </div>
         </div>
         <div className='comments-container'>
-          <h1>Comments Logic Here</h1>
+          {/* {comments &&
+            comments.map((commentItem) => (
+              <CommentComponent
+                key={commentItem._id}
+                commentProps={commentItem}
+              />
+            ))} */}
         </div>
         <div className='add-comment'>
           <h3>Add Comment</h3>
