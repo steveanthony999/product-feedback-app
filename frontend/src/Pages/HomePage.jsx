@@ -41,7 +41,6 @@ const HomePage = () => {
       const sorted = feedbacks.slice().sort((a, b) => a.upvotes - b.upvotes);
       setSortedFeedback(sorted);
     } else if (sortOrder === 'most-comments') {
-      console.log('Most Comments');
       setSortedFeedback(
         _.orderBy(
           feedbacks,
@@ -54,7 +53,6 @@ const HomePage = () => {
         )
       );
     } else if (sortOrder === 'least-comments') {
-      console.log('Least Comments');
       setSortedFeedback(
         _.orderBy(
           feedbacks,
@@ -68,6 +66,10 @@ const HomePage = () => {
       );
     }
   }, [feedbacks, sortOrder]);
+
+  //   if (isLoading) {
+  //     return <p>Loading...</p>;
+  //   }
 
   const passSortOrder = (e) => {
     setSortOrder(e);

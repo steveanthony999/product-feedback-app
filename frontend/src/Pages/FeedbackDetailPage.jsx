@@ -29,23 +29,23 @@ const FeedbackDetailPage = () => {
     }
 
     dispatch(getFeedback(feedbackId));
-    // dispatch(getComments(feedbackId));
-    comments ? console.log(getComments(feedbackId)) : console.log('none');
+    dispatch(getComments(feedbackId));
   }, [isError, message, feedbackId]);
 
   if (isLoading) {
     return <p>Loading...</p>;
   }
 
-  //   if (isError) {
-  //     return <h3>Something went wrong</h3>;
-  //   }
+  if (isError) {
+    return <h3>Something went wrong</h3>;
+  }
 
   return (
     <div className='FeedbackDetailPage'>
       <div className='container'>
         <div className='top-bar'>
-          <p>Go Back</p>
+          <Link to={'/'}>Back</Link>
+          <br />
           <Link to={`/edit-feedback${location.pathname}`}>Edit Feedback</Link>
         </div>
         <div className='feedback-item'>
@@ -60,13 +60,13 @@ const FeedbackDetailPage = () => {
           </div>
         </div>
         <div className='comments-container'>
-          {/* {comments &&
-            comments.map((commentItem) => (
-              <CommentComponent
-                key={commentItem._id}
-                commentProps={commentItem}
-              />
-            ))} */}
+          <p>Comments here:</p>
+          {comments.map((commentItem) => (
+            <CommentComponent
+              key={commentItem._id}
+              commentProps={commentItem}
+            />
+          ))}
         </div>
         <div className='add-comment'>
           <h3>Add Comment</h3>

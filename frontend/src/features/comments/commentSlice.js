@@ -60,7 +60,7 @@ export const commentSlice = createSlice({
       .addCase(getComments.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.notes = action.payload;
+        state.comments = action.payload;
       })
       .addCase(getComments.rejected, (state, action) => {
         state.isLoading = false;
