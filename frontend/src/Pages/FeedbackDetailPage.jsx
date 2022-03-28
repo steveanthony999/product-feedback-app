@@ -32,6 +32,10 @@ const FeedbackDetailPage = () => {
     dispatch(getComments(feedbackId));
   }, [isError, message, feedbackId]);
 
+  useEffect(() => {
+    console.log(comments.length);
+  }, [comments]);
+
   if (isLoading) {
     return <p>Loading...</p>;
   }
@@ -82,3 +86,5 @@ const FeedbackDetailPage = () => {
   );
 };
 export default FeedbackDetailPage;
+
+//
