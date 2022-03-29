@@ -12,9 +12,7 @@ import EmptyFeedbackComponent from '../Components/EmptyFeedbackComponent';
 import BackgroundHeaderImg from '../assets/suggestions/desktop/background-header.png';
 
 const HomePage = () => {
-  const { feedbacks, isLoading, isSuccess } = useSelector(
-    (state) => state.feedbacks
-  );
+  const { feedbacks, isSuccess } = useSelector((state) => state.feedbacks);
 
   const dispatch = useDispatch();
 
@@ -34,36 +32,41 @@ const HomePage = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (sortOrder === 'most-upvotes') {
-      const sorted = feedbacks.slice().sort((a, b) => b.upvotes - a.upvotes);
-      setSortedFeedback(sorted);
-    } else if (sortOrder === 'least-upvotes') {
-      const sorted = feedbacks.slice().sort((a, b) => a.upvotes - b.upvotes);
-      setSortedFeedback(sorted);
-    } else if (sortOrder === 'most-comments') {
-      setSortedFeedback(
-        _.orderBy(
-          feedbacks,
-          [
-            function (x) {
-              return x.comments === undefined ? [] : x.comments;
-            },
-          ],
-          ['desc']
-        )
-      );
-    } else if (sortOrder === 'least-comments') {
-      setSortedFeedback(
-        _.orderBy(
-          feedbacks,
-          [
-            function (x) {
-              return x.comments === undefined ? [] : x.comments;
-            },
-          ],
-          ['asc']
-        )
-      );
+    if (feedbacks) {
+      if (sortOrder === 'most-upvotes') {
+        const sorted =
+          feedbacks &&
+          feedbacks.length > 0 &&
+          feedbacks.slice().sort((a, b) => b.upvotes - a.upvotes);
+        setSortedFeedback(sorted);
+      } else if (sortOrder === 'least-upvotes') {
+        const sorted = feedbacks.slice().sort((a, b) => a.upvotes - b.upvotes);
+        setSortedFeedback(sorted);
+      } else if (sortOrder === 'most-comments') {
+        setSortedFeedback(
+          _.orderBy(
+            feedbacks,
+            [
+              function (x) {
+                return x.comments === undefined ? [] : x.comments;
+              },
+            ],
+            ['desc']
+          )
+        );
+      } else if (sortOrder === 'least-comments') {
+        setSortedFeedback(
+          _.orderBy(
+            feedbacks,
+            [
+              function (x) {
+                return x.comments === undefined ? [] : x.comments;
+              },
+            ],
+            ['asc']
+          )
+        );
+      }
     }
   }, [feedbacks, sortOrder]);
 
@@ -99,12 +102,13 @@ const HomePage = () => {
             <EmptyFeedbackComponent />
           ) : (
             <>
-              {sortedFeedback.map((feedback) => (
-                <ProductFeedbackComponent
-                  key={feedback._id}
-                  feedback={feedback}
-                />
-              ))}
+              {sortedFeedback.length > 0 &&
+                sortedFeedback.map((feedback) => (
+                  <ProductFeedbackComponent
+                    key={feedback._id}
+                    feedback={feedback}
+                  />
+                ))}
             </>
           )}
         </div>

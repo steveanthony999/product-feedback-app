@@ -1,25 +1,20 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useLocation, useParams } from 'react-router-dom';
+
 import { getFeedback } from '../features/feedbacks/feedbackSlice';
-import {
-  getComments,
-  reset as commentReset,
-} from '../features/comments/commentSlice';
+import { getComments } from '../features/comments/commentSlice';
 import CommentComponent from '../Components/CommentComponent';
 
 const FeedbackDetailPage = () => {
   const location = useLocation();
 
-  const { feedback, isLoading, isSuccess, isError, message } = useSelector(
+  const { isLoading, isError, message } = useSelector(
     (state) => state.feedbacks
   );
 
-  const { comments, isLoading: commentsIsLoading } = useSelector(
-    (state) => state.comments
-  );
+  const { comments } = useSelector((state) => state.comments);
 
-  const params = useParams();
   const dispatch = useDispatch();
   const { feedbackId } = useParams();
 
@@ -30,19 +25,15 @@ const FeedbackDetailPage = () => {
 
     dispatch(getFeedback(feedbackId));
     dispatch(getComments(feedbackId));
-  }, [isError, message, feedbackId]);
+  }, [dispatch, isError, message, feedbackId]);
 
-  useEffect(() => {
-    console.log(comments.length);
-  }, [comments]);
+  //   if (isLoading) {
+  //     return <p>Loading...</p>;
+  //   }
 
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
-
-  if (isError) {
-    return <h3>Something went wrong</h3>;
-  }
+  //   if (isError) {
+  //     return <h3>Something went wrong</h3>;
+  //   }
 
   return (
     <div className='FeedbackDetailPage'>

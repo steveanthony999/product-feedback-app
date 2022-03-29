@@ -1,39 +1,23 @@
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
-import { getComments, reset } from '../features/comments/commentSlice';
+import CommentContext from '../context/commentContext';
 
 const ProductFeedbackComponent = ({ feedback }) => {
-  const { comments, isLoading, isError, message } = useSelector(
-    (state) => state.comments
-  );
-
-  const dispatch = useDispatch();
+  const { commentCount } = useContext(CommentContext);
 
   //   useEffect(() => {
   //     if (isError) {
   //       console.log(message);
   //     }
 
-  //     dispatch(getComments(feedback._id));
-  //   }, [feedback, isError, message]);
+  //   if (isLoading) {
+  //     return <p>Loading...</p>;
+  //   }
 
-  //   useEffect(() => {
-  //     if (comments) {
-  //       console.log(comments.length);
-  //     } else {
-  //       console.log('no comments');
-  //     }
-  //   }, [comments]);
-
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
-
-  if (isError) {
-    return <h3>Something went wrong</h3>;
-  }
+  //   if (isError) {
+  //     return <h3>Something went wrong</h3>;
+  //   }
 
   return (
     <Link to={`/feedback/${feedback._id}`}>
@@ -49,7 +33,7 @@ const ProductFeedbackComponent = ({ feedback }) => {
           </div>
           <div className='right'>
             {/* <p>{comments ? comments.length : 0}</p> */}
-            <p></p>
+            <p>{commentCount}</p>
           </div>
         </div>
       </div>
