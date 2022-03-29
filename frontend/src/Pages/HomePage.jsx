@@ -43,36 +43,40 @@ const HomePage = () => {
         const sorted = feedbacks.slice().sort((a, b) => a.upvotes - b.upvotes);
         setSortedFeedback(sorted);
       } else if (sortOrder === 'most-comments') {
-        setSortedFeedback(
-          _.orderBy(
-            feedbacks,
-            [
-              function (x) {
-                return x.comments === undefined ? [] : x.comments;
-              },
-            ],
-            ['desc']
-          )
-        );
+        const sorted = feedbacks
+          .slice()
+          .sort((a, b) => b.commentLength - a.commentLength);
+        setSortedFeedback(sorted);
+        // setSortedFeedback(
+        //   _.orderBy(
+        //     feedbacks,
+        //     [
+        //       function (x) {
+        //         return x.comments === undefined ? [] : x.comments;
+        //       },
+        //     ],
+        //     ['desc']
+        //   )
+        // );
       } else if (sortOrder === 'least-comments') {
-        setSortedFeedback(
-          _.orderBy(
-            feedbacks,
-            [
-              function (x) {
-                return x.comments === undefined ? [] : x.comments;
-              },
-            ],
-            ['asc']
-          )
-        );
+        const sorted = feedbacks
+          .slice()
+          .sort((a, b) => a.commentLength - b.commentLength);
+        setSortedFeedback(sorted);
+        // setSortedFeedback(
+        //   _.orderBy(
+        //     feedbacks,
+        //     [
+        //       function (x) {
+        //         return x.comments === undefined ? [] : x.comments;
+        //       },
+        //     ],
+        //     ['asc']
+        //   )
+        // );
       }
     }
   }, [feedbacks, sortOrder]);
-
-  //   if (isLoading) {
-  //     return <p>Loading...</p>;
-  //   }
 
   const passSortOrder = (e) => {
     setSortOrder(e);

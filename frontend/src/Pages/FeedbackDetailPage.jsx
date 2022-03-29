@@ -9,7 +9,7 @@ import CommentComponent from '../Components/CommentComponent';
 const FeedbackDetailPage = () => {
   const location = useLocation();
 
-  const { isLoading, isError, message } = useSelector(
+  const { feedbacks, isLoading, isError, message } = useSelector(
     (state) => state.feedbacks
   );
 
@@ -44,14 +44,15 @@ const FeedbackDetailPage = () => {
           <Link to={`/edit-feedback${location.pathname}`}>Edit Feedback</Link>
         </div>
         <div className='feedback-item'>
-          <div className='left'>99</div>
+          <div className='left'>{feedbacks.upvotes}</div>
           <div className='middle'>
-            <h3>Feedback Title</h3>
-            <p>Feedback Detail</p>
-            <div>Category</div>
+            <h3>{feedbacks.title}</h3>
+            <p>{feedbacks.description}</p>
+            <div>{feedbacks.category}</div>
           </div>
           <div className='right'>
-            <p>4</p>
+            <p>{feedbacks.commentLength}</p>
+            {/* <p>{feedbacks.commentLength + comments.repliesLength}</p> */}
           </div>
         </div>
         <div className='comments-container'>

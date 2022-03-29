@@ -24,6 +24,10 @@ const feedbackSchema = mongoose.Schema(
       type: Number,
       default: 0,
     },
+    commentLength: {
+      type: Number,
+      default: 0,
+    },
   },
   {
     timestamps: true,
